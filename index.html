@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listening Practice - Spot the 5 Errors</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --selected: #f59e0b;
+      --correct: #22c55e;
+      --wrong: #ef4444;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 30px 16px; min-height: 100vh; }
+    .container { background: var(--card); max-width: 720px; width: 100%; border-radius: 14px; padding: 28px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+    h1 { font-size: 1.5rem; color: var(--accent); margin-bottom: 8px; }
+    p.instr { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
+    .audio-box { background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); padding: 16px; border-radius: 10px; margin-bottom: 20px; }
+    audio { width: 100%; height: 42px; outline: none; }
+    .counter-bar { display: flex; justify-content: space-between; font-weight: 600; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border-radius: 8px; margin-bottom: 18px; border: 1px solid var(--border); }
+    .counter { color: var(--selected); font-weight: 700; }
+    .counter.full { color: var(--correct); }
+    .script-box { background: #0b1120; padding: 22px; border-radius: 10px; border: 1px solid var(--border); line-height: 2.3; font-size: 1.1rem; margin-bottom: 22px; user-select: none; }
+    .dialogue-turn { margin-bottom: 14px; }
+    .speaker { font-weight: 700; color: var(--accent); margin-right: 4px; }
+    .word { display: inline-block; padding: 2px 6px; margin: 1px 2px; border-radius: 6px; cursor: pointer; border-bottom: 2px solid transparent; transition: background 0.15s; }
+    .word:hover { background: rgba(255, 255, 255, 0.1); }
+    .word.selected { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border-bottom: 2px solid var(--selected); font-weight: 600; }
+    .word.hit { background: rgba(34, 197, 94, 0.25) !important; color: #4ade80 !important; border-bottom: 2px solid var(--correct) !important; text-decoration: line-through; }
+    .word.missed { border: 2px dashed var(--selected) !important; color: #fbbf24 !important; background: transparent !important; }
+    .word.false-alarm { background: rgba(239, 68, 68, 0.2) !important; color: #f87171 !important; border-bottom: 2px solid var(--wrong) !important; }
+    .actions { display: flex; gap: 12px; margin-bottom: 20px; }
+    button { flex: 1; padding: 13px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; }
+    .btn-check { background: var(--accent); color: #0f172a; }
+    .btn-check:hover { background: var(--accent-hover); }
+    .btn-reset { background: #334155; color: #fff; }
+    .btn-reset:hover { background: #475569; }
+    .results { display: none; padding: 18px; background: #0b1120; border-radius: 10px; border: 1px solid var(--border); }
+    .results.visible { display: block; }
+    .diff-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem; }
+    .diff-table th, .diff-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    .diff-table th { color: var(--text-muted); }
+    .td-wrong { color: #f87171; text-decoration: line-through; font-weight: 600; }
+    .td-right { color: #4ade80; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Spot the 5 Wrong Words</h1>
+    <p class="instr">Escucha el diálogo con atención. Haz clic en las <strong>5 palabras</strong> del texto que son distintas a lo que dicen Paul y Sarah.</p>
+
+    <div class="audio-box">
+      <audio id="player" controls src="Camping Gear - Randalls ESL Cyber Listening Lab.mp3"></audio>
+    </div>
+
+    <div class="counter-bar">
+      <span>Palabras seleccionadas:</span>
+      <span id="counter" class="counter">0 / 5</span>
+    </div>
+
+    <div class="script-box" id="scriptBox"></div>
+
+    <div class="actions">
+      <button class="btn-check" id="checkBtn">Verificar respuestas</button>
+      <button class="btn-reset" id="resetBtn">Reiniciar</button>
+    </div>
+
+    <div class="results" id="resultsBox">
+      <h3 id="scoreText" style="margin-bottom: 8px;"></h3>
+      <table class="diff-table">
+        <thead>
+          <tr>
+            <th>Texto en pantalla</th>
+            <th>Lo que dijo el audio</th>
+          </tr>
+        </thead>
+        <tbody id="diffBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const DISCREPANCIES = [
+      { screen: "monthly", audio: "yearly" },
+      { screen: "five", audio: "three" },
+      { screen: "fishing", audio: "hiking" },
+      { screen: "moon", audio: "stars" },
+      { screen: "snow", audio: "rain" }
+    ];
+
+    const TURNS = [
+      {
+        speaker: "Paul:",
+        text: "Sarah , I've been looking forward to our {monthly} campout for {five} weeks ."
+      },
+      {
+        speaker: "Sarah:",
+        text: "Me too ! It's going to be a wonderful day for {fishing} tomorrow . The great outdoors , camping under the {moon} . This is the life ."
+      },
+      {
+        speaker: "Sarah:",
+        text: "Yeah , but Paul , I'm a little bit worried about the weather though . The weatherman said it was going to {snow} later tonight ."
+      }
+    ];
+
+    const scriptBox = document.getElementById("scriptBox");
+    const counterEl = document.getElementById("counter");
+    const checkBtn = document.getElementById("checkBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const resultsBox = document.getElementById("resultsBox");
+    const scoreText = document.getElementById("scoreText");
+    const diffBody = document.getElementById("diffBody");
+
+    let selectedWords = new Set();
+    let isChecked = false;
+
+    function buildUI() {
+      scriptBox.innerHTML = "";
+      selectedWords.clear();
+      updateCounter();
+
+      TURNS.forEach(turn => {
+        const turnDiv = document.createElement("div");
+        turnDiv.className = "dialogue-turn";
+
+        const spk = document.createElement("span");
+        spk.className = "speaker";
+        spk.textContent = turn.speaker + " ";
+        turnDiv.appendChild(spk);
+
+        const words = turn.text.split(" ");
+        words.forEach(token => {
+          if (!token.trim()) return;
+
+          let clean = token;
+          let isTarget = false;
+
+          if (token.startsWith("{") && token.endsWith("}")) {
+            clean = token.slice(1, -1);
+            isTarget = true;
+          }
+
+          if ([".", ",", "!"].includes(clean)) {
+            turnDiv.appendChild(document.createTextNode(clean + " "));
+            return;
+          }
+
+          const span = document.createElement("span");
+          span.className = "word";
+          span.textContent = clean;
+          span.dataset.word = clean.toLowerCase();
+          if (isTarget) span.dataset.target = "true";
+
+          span.addEventListener("click", () => toggleWord(span));
+          turnDiv.appendChild(span);
+          turnDiv.appendChild(document.createTextNode(" "));
+        });
+
+        scriptBox.appendChild(turnDiv);
+      });
+    }
+
+    function toggleWord(el) {
+      if (isChecked) return;
+
+      if (selectedWords.has(el)) {
+        selectedWords.delete(el);
+        el.classList.remove("selected");
+      } else {
+        if (selectedWords.size >= 5) {
+          alert("Ya seleccionaste 5 palabras. Haz clic en una de ellas para desmarcarla primero si deseas cambiarla.");
+          return;
+        }
+        selectedWords.add(el);
+        el.classList.add("selected");
+      }
+      updateCounter();
+    }
+
+    function updateCounter() {
+      const count = selectedWords.size;
+      counterEl.textContent = `${count} / 5`;
+      if (count === 5) {
+        counterEl.classList.add("full");
+      } else {
+        counterEl.classList.remove("full");
+      }
+    }
+
+    checkBtn.addEventListener("click", () => {
+      if (isChecked) return;
+      if (selectedWords.size === 0) {
+        alert("Selecciona al menos una palabra antes de verificar.");
+        return;
+      }
+
+      isChecked = true;
+      let score = 0;
+      const allWords = document.querySelectorAll(".word");
+
+      allWords.forEach(el => {
+        const isTarget = el.dataset.target === "true";
+        const isSelected = selectedWords.has(el);
+
+        if (isSelected && isTarget) {
+          el.className = "word hit";
+          score++;
+        } else if (isSelected && !isTarget) {
+          el.className = "word false-alarm";
+        } else if (!isSelected && isTarget) {
+          el.className = "word missed";
+        }
+      });
+
+      resultsBox.classList.add("visible");
+      scoreText.innerHTML = `Puntuación: <span style="color: ${score >= 4 ? '#4ade80' : '#f59e0b'}">${score} de 5 aciertos</span>`;
+      
+      diffBody.innerHTML = "";
+      DISCREPANCIES.forEach(item => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td class="td-wrong">${item.screen}</td><td class="td-right">${item.audio}</td>`;
+        diffBody.appendChild(tr);
+      });
+    });
+
+    resetBtn.addEventListener("click", () => {
+      isChecked = false;
+      resultsBox.classList.remove("visible");
+      buildUI();
+    });
+
+    buildUI();
+  </script>
+</body>
+</html>
