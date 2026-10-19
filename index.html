@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listening Challenge - 10 Exercises</title>
+  <title>Benchmark Listening Challenge - 10 Exercises</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -154,29 +154,19 @@
 
     .script-box {
       background: #0b1120;
-      padding: 22px;
+      padding: 24px;
       border-radius: 10px;
       border: 1px solid var(--border);
       line-height: 2.2;
-      font-size: 1.02rem;
+      font-size: 1.05rem;
       margin-bottom: 20px;
       user-select: none;
-    }
-
-    .dialogue-turn {
-      margin-bottom: 12px;
-    }
-
-    .speaker {
-      font-weight: 700;
-      color: var(--accent);
-      margin-right: 4px;
     }
 
     .word {
       display: inline-block;
       padding: 2px 6px;
-      margin: 1px 2px;
+      margin: 1px 1px;
       border-radius: 6px;
       cursor: pointer;
       border-bottom: 2px solid transparent;
@@ -309,8 +299,8 @@
       <span class="grid-label">Ejercicio:</span>
     </div>
 
-    <h1 id="exerciseTitle">Exercise 1: Camping Under the Stars</h1>
-    <p class="instr">Escucha el audio con atención. Haz clic sobre las <strong>5 palabras</strong> en el texto que sean diferentes a lo que dicen los hablantes.</p>
+    <h1 id="exerciseTitle">Exercise 1: Locked Out</h1>
+    <p class="instr">Escucha el audio con atención. Haz clic sobre las <strong>5 palabras</strong> en el texto que sean diferentes a lo que dice la grabación.</p>
 
     <div class="audio-box">
       <audio id="player" controls></audio>
@@ -345,182 +335,124 @@
   <script>
     const EXERCISES = [
       {
-        title: "Exercise 1: Camping Under the Stars",
-        audioSrc: "audio1.mp3.mp3",
+        title: "Exercise 1: Locked Out",
+        audioSrc: "audio1.mp3",
         discrepancies: [
-          { screen: "monthly", audio: "yearly" },
+          { screen: "late", audio: "early" },
+          { screen: "jacket", audio: "shirt" },
+          { screen: "back", audio: "front" },
+          { screen: "table", audio: "counter" },
+          { screen: "shoes", audio: "socks" }
+        ],
+        text: "I really thought today would be different. I woke up {late}, made actual coffee instead of that terrible instant stuff, and even ironed my {jacket}. For once, I felt completely in control of my life. Then, I heard the heavy click of the {back} door shutting behind me, and my stomach dropped. My keys are sitting right there on the kitchen {table}, next to my phone and my wallet. Now I'm standing in the hallway in my {shoes}, listening to my phone ring inside an empty apartment. Sometimes I wonder if the universe is trying to tell me to stay in bed."
+      },
+      {
+        title: "Exercise 2: Job Resume",
+        audioSrc: "audio2.mp3",
+        discrepancies: [
+          { screen: "Spanish", audio: "French" },
           { screen: "five", audio: "three" },
-          { screen: "fishing", audio: "hiking" },
-          { screen: "moon", audio: "stars" },
-          { screen: "snow", audio: "rain" }
+          { screen: "sandwich", audio: "croissant" },
+          { screen: "London", audio: "Paris" },
+          { screen: "fast", audio: "hard" }
         ],
-        turns: [
-          { speaker: "Paul:", text: "Sarah , I've been looking forward to our {monthly} campout for {five} weeks ." },
-          { speaker: "Sarah:", text: "Me too ! It's going to be a wonderful day for {fishing} tomorrow . The great outdoors , camping under the {moon} . This is the life ." },
-          { speaker: "Sarah:", text: "Yeah , but Paul , I'm a little bit worried about the weather though . The weatherman said it was going to {snow} later tonight ." }
-        ]
+        text: "Please don't look at my resume too closely. Yes, it says I'm fluent in {Spanish}, and technically, I did pass an online course {five} years ago, so that isn't a complete lie. If you ask me to order a {sandwich}, I will absolutely shine. However, if you expect me to negotiate a corporate merger in {London}, we might run into a slight communication barrier. What I lack in vocabulary, though, I make up for in sheer panic-driven determination. Hire me, and I promise I will work twice as {fast} just to cover up the things I don't actually know yet."
       },
       {
-        title: "Exercise 2: University Degree",
-        audioSrc: "audio2.mp3.mp3",
+        title: "Exercise 3: The Yellow Umbrella",
+        audioSrc: "audio3.mp3",
         discrepancies: [
-          { screen: "month", audio: "week" },
-          { screen: "miracle", audio: "accomplishment" },
-          { screen: "bills", audio: "fees" },
-          { screen: "management", audio: "administration" },
-          { screen: "marine", audio: "wildlife" }
+          { screen: "crowded", audio: "empty" },
+          { screen: "red", audio: "yellow" },
+          { screen: "town", audio: "city" },
+          { screen: "hands", audio: "feet" },
+          { screen: "silver", audio: "brass" }
         ],
-        turns: [
-          { speaker: "Daughter:", text: "Hey Dad , are you going to miss me when I leave for college next {month} ?" },
-          { speaker: "Dad:", text: "Of course I will ! I'll miss you and worry about you . Getting a university degree is a real {miracle} ." },
-          { speaker: "Dad:", text: "Did you pay your tuition and housing {bills} by the deadline ?" },
-          { speaker: "Dad:", text: "You know , business {management} will be a great major for you ." },
-          { speaker: "Daughter:", text: "Dad , I decided to major in {marine} science ." }
-        ]
+        text: "The station platform was supposed to be {crowded} at midnight, yet there she was, holding a bright {red} umbrella under a completely clear sky. I told myself to look away and mind my own business, just like anyone living in this {town} would do. When the train finally pulled in, the lights inside the carriages flickered and died for a second. By the time they came back on, she was gone, but the yellow umbrella was lying right at my {hands}. Inside the handle, someone had taped a small {silver} key and a note with my own name on it."
       },
       {
-        title: "Exercise 3: Radio Advertising",
-        audioSrc: "audio3.mp3.mp3",
+        title: "Exercise 4: Difficult Goodbye",
+        audioSrc: "audio4.mp3",
         discrepancies: [
-          { screen: "cat", audio: "dog" },
-          { screen: "tea", audio: "coffee" },
-          { screen: "bedroom", audio: "kitchen" },
-          { screen: "Super", audio: "Master" },
-          { screen: "four", audio: "three" }
+          { screen: "weeks", audio: "months" },
+          { screen: "busy", audio: "stressed" },
+          { screen: "boxes", audio: "bags" },
+          { screen: "sad", audio: "angry" },
+          { screen: "slowly", audio: "quietly" }
         ],
-        turns: [
-          { speaker: "Carpet:", text: "Hey you ! This is your carpet speaking ! Hello ! Hey ! I take a real beating from you and your family every day ." },
-          { speaker: "Carpet:", text: "The kids track mud all over me , the {cat} leaves a bunch of fur balls everywhere ." },
-          { speaker: "Carpet:", text: "You spilt {tea} the other day while entertaining guests , and your husband left a trail of potato chip crumbs from the sofa to the {bedroom} last night ." },
-          { speaker: "Carpet:", text: "Now pick up that phone and call {Super} Cleaners now ! They'll clean any {four} rooms for 29.95 , and any connecting hall is free ." }
-        ]
+        text: "You don't need to keep apologizing, because honestly, I saw this coming {weeks} ago. People don't just suddenly stop asking how your day went unless they've already checked out of the relationship. I kept making excuses for you—telling myself you were just {busy} with work or tired from the commute. The truth is, I was working overtime to keep us together while you were quietly packing your {boxes} in your head. I'm not even {sad} anymore; I'm just exhausted from trying to love someone who isn't really in the room. Take your things, and please, just close the door {slowly}."
       },
       {
-        title: "Exercise 4: Personal Conflicts",
-        audioSrc: "audio4.mp3.mp3",
+        title: "Exercise 5: The Audition",
+        audioSrc: "audio5.mp3",
         discrepancies: [
-          { screen: "microwave", audio: "dishwasher" },
-          { screen: "plates", audio: "bowls" },
-          { screen: "three", audio: "two" },
-          { screen: "seven", audio: "six" },
-          { screen: "monster", audio: "robot" }
+          { screen: "lawyer", audio: "accountant" },
+          { screen: "cold", audio: "spicy" },
+          { screen: "hair", audio: "glasses" },
+          { screen: "chicken", audio: "seagull" },
+          { screen: "shield", audio: "sword" }
         ],
-        turns: [
-          { speaker: "Roommate:", text: "Hey Sam , you have a minute ?" },
-          { speaker: "Sam:", text: "Sure , unless this is about the great {microwave} mystery again . I don't want to talk about that ." },
-          { speaker: "Roommate:", text: "It is not a mystery ! Someone keeps putting dirty {plates} next to the dishwasher and not in it ." },
-          { speaker: "Roommate:", text: "It has {three} buttons , Sam !" },
-          { speaker: "Sam:", text: "Can we talk about your {seven} AM blender routine ? I woke up thinking the apartment was being attacked by a very angry {monster} ." }
-        ]
+        text: "Thank you so much for seeing me today! I know the casting call asked for a fierce, intimidating medieval warrior, and I realize I look more like an {lawyer} who gets nervous ordering {cold} food. However, acting is all about transformation, isn't it? If you just squint a little and ignore my {hair}, you can practically see the bloodthirsty rage behind my eyes. Wait, please don't write anything down yet! Let me show you my battle cry. Okay, maybe that sounded a bit like a startled {chicken}, but with proper lighting and a heavy {shield}, I'll be terrifying, I swear!"
       },
       {
-        title: "Exercise 5: Neighborhood Problems",
-        audioSrc: "audio5.mp3.mp3",
+        title: "Exercise 6: Time Capsule",
+        audioSrc: "audio6.mp3",
         discrepancies: [
-          { screen: "screaming", audio: "music" },
-          { screen: "concert", audio: "party" },
-          { screen: "upstairs", audio: "downstairs" },
-          { screen: "mirror", audio: "windshield" },
-          { screen: "wide", audio: "tight" }
+          { screen: "thirty", audio: "twenty" },
+          { screen: "old", audio: "faded" },
+          { screen: "history", audio: "math" },
+          { screen: "movie", audio: "concert" },
+          { screen: "phone", audio: "watch" }
         ],
-        turns: [
-          { speaker: "Man:", text: "Hey Claire , did you hear anything strange last night ? I mean , I certainly did ." },
-          { speaker: "Claire:", text: "You mean the {screaming} at like 1 AM ? It sounded like someone was testing speakers for a {concert} or something in the apartment below ." },
-          { speaker: "Man:", text: "I thought so too , and I almost went {upstairs} , but I didn't want to start a whole neighborhood drama ." },
-          { speaker: "Man:", text: "Speaking of problems , did you see the note on my {mirror} ?" },
-          { speaker: "Man:", text: "I guess I parked a little crooked , but the spot is {wide} and I'll try to straighten it out next time ." }
-        ]
+        text: "We buried this rusty metal box in the backyard {thirty} years ago, convinced we would still be best friends when we dug it up. Looking at these {old} photographs and silly notes now, it feels like I'm reading about strangers. Back then, our biggest worry was passing {history} class and saving enough allowance to buy {movie} tickets. We promised we would never become boring adults who cared about mortgages and rush hour traffic, yet here I am, checking my {phone} before I even finish opening it. I wonder where you are today, and if you ever think about this afternoon."
       },
       {
-        title: "Exercise 6: Clothing Styles",
-        audioSrc: "audio6.mp3.mp3",
+        title: "Exercise 7: Family Secret",
+        audioSrc: "audio7.mp3",
         discrepancies: [
-          { screen: "shoes", audio: "clothes" },
-          { screen: "winter", audio: "summer" },
-          { screen: "boots", audio: "sandals" },
-          { screen: "October", audio: "November" },
-          { screen: "scarf", audio: "hat" }
-        ],
-        turns: [
-          { speaker: "Girl:", text: "Hey Jake , are you ready for your trip ?" },
-          { speaker: "Jake:", text: "Well , not really . I still have to buy some {shoes} ." },
-          { speaker: "Jake:", text: "It's really hot in the {winter} , so I'm going to buy some shorts , {boots} , and a few t-shirts ." },
-          { speaker: "Jake:", text: "People say the fall can still be warm until {October} , so I'm going to buy some jeans and casual shirts ." },
-          { speaker: "Jake:", text: "It often snows in the mountains , so I'm going to buy a couple of warm sweaters , a jacket , and a {scarf} ." }
-        ]
-      },
-      {
-        title: "Exercise 7: Office Supplies",
-        audioSrc: "audio7.mp3.mp3",
-        discrepancies: [
-          { screen: "morning", audio: "afternoon" },
-          { screen: "5:30", audio: "4:30" },
-          { screen: "catalog", audio: "brochure" },
-          { screen: "desktop", audio: "laptop" },
-          { screen: "email", audio: "fax" }
-        ],
-        turns: [
-          { speaker: "Receptionist:", text: "Hello , Ultimate Computers , may I help you ?" },
-          { speaker: "Jack:", text: "Yes , this is Jack Kordell . May I speak to Elaine Strong , please ?" },
-          { speaker: "Receptionist:", text: "She's not in right now . She should be here later on this {morning} , maybe about {5:30} ." },
-          { speaker: "Jack:", text: "Miss Strong sent me a {catalog} detailing your newest line of {desktop} computers , but there wasn't any information about after-sales service ." },
-          { speaker: "Receptionist:", text: "Would you like me to {email} that to you ?" }
-        ]
-      },
-      {
-        title: "Exercise 8: Shopping for the Day",
-        audioSrc: "audio8.mp3.mp3",
-        discrepancies: [
-          { screen: "Mother's", audio: "Father's" },
-          { screen: "watch", audio: "wallet" },
-          { screen: "blue", audio: "black" },
-          { screen: "twenty", audio: "ten" },
-          { screen: "belt", audio: "tie" }
-        ],
-        turns: [
-          { speaker: "Clerk:", text: "Hi young lady , how may I help you ?" },
-          { speaker: "Girl:", text: "Well , yeah , I'm looking for a {Mother's} Day gift ." },
-          { speaker: "Clerk:", text: "How about getting your father a new {watch} ?" },
-          { speaker: "Girl:", text: "How much is that wallet ? The {blue} one ?" },
-          { speaker: "Girl:", text: "I don't have that much money . Probably about {twenty} dollars or so ." },
-          { speaker: "Clerk:", text: "How about this {belt} ? How about 5 dollars ? What do you say ?" }
-        ]
-      },
-      {
-        title: "Exercise 9: Restaurant Order",
-        audioSrc: "audio9.mp3.mp3",
-        discrepancies: [
-          { screen: "here", audio: "go" },
-          { screen: "hamburgers", audio: "cheeseburgers" },
-          { screen: "basketball", audio: "soccer" },
           { screen: "vanilla", audio: "chocolate" },
-          { screen: "dog", audio: "cat" }
+          { screen: "wooden", audio: "locked" },
+          { screen: "cup", audio: "egg" },
+          { screen: "sugar", audio: "coffee" },
+          { screen: "birthday", audio: "Christmas" }
         ],
-        turns: [
-          { speaker: "Cashier:", text: "Hi , is this going to be for here or to go ?" },
-          { speaker: "Customer:", text: "To {here} . And yeah , I'd like 80 {hamburgers} ." },
-          { speaker: "Customer:", text: "Actually , the food is for a girl's {basketball} team , and the coaches , and some wild fans ." },
-          { speaker: "Customer:", text: "I'd like 60 large fries , 13 baked potatoes , 40 {vanilla} shakes , and a glass of water with no ice ." },
-          { speaker: "Customer:", text: "It's for our team {dog} ." }
-        ]
+        text: "Everyone in this family thinks my grandmother's famous {vanilla} cake is a hundred-year-old culinary masterpiece passed down through generations. Before she passed away, she made me swear I would protect the secret with my life, and finally handed me the {wooden} recipe box. Do you want to know what was inside? An empty cardboard box of supermarket cake mix and a sticky note that said, \"Just add an extra {cup} and a spoonful of instant {sugar}.\" I have been lying to my relatives every {birthday} for five years, and honestly, the guilt tastes almost as good as the frosting."
       },
       {
-        title: "Exercise 10: Health Club",
-        audioSrc: "audio10.mp3.mp3",
+        title: "Exercise 8: The Whistleblower",
+        audioSrc: "audio8.mp3",
         discrepancies: [
-          { screen: "boxes", audio: "weights" },
-          { screen: "leg", audio: "back" },
-          { screen: "three", audio: "five" },
-          { screen: "Texas", audio: "Utah" },
-          { screen: "history", audio: "math" }
+          { screen: "station", audio: "airport" },
+          { screen: "Friday", audio: "Tuesday" },
+          { screen: "hundreds", audio: "thousands" },
+          { screen: "thirty", audio: "twenty" },
+          { screen: "black", audio: "blue" }
         ],
-        turns: [
-          { speaker: "Justin:", text: "Hi , do you need some help with those {boxes} ? I can move them for you ." },
-          { speaker: "Justin:", text: "No , let me help you ... Oh , my {leg} !" },
-          { speaker: "Rachel:", text: "Are you okay ? Do you come here often ?" },
-          { speaker: "Rachel:", text: "Yeah , I usually come {three} times a week . I spent most of my life in a small town in {Texas} called Spanish Fork ." },
-          { speaker: "Rachel:", text: "I'm a teacher . I teach {history} and science ." }
-        ]
+        text: "If you are watching this video, it means I didn't make it to the {station} in time. For the past three years, I've been working in the accounting department at NexaCorp, and what I discovered last {Friday} goes way beyond simple tax evasion. They aren't just hiding money; they are covering up safety failures that could affect {hundreds} of people in this city. I tried taking the files to my supervisor, and {thirty} minutes later, my security badge was deactivated. Everything you need to prove what they've done is on the {black} flash drive taped underneath my desk drawer."
+      },
+      {
+        title: "Exercise 9: Backpacking Reality",
+        audioSrc: "audio9.mp3",
+        discrepancies: [
+          { screen: "Asia", audio: "Europe" },
+          { screen: "wine", audio: "espresso" },
+          { screen: "four", audio: "six" },
+          { screen: "cheese", audio: "goat" },
+          { screen: "legs", audio: "feet" }
+        ],
+        text: "Social media really lied to me about backpacking through {Asia}. In the photos, everyone looks effortless and glowing while sipping {wine} in quiet cobblestone alleys. Meanwhile, I have been carrying a forty-pound backpack up {four} flights of stairs because the hostel elevator has been broken since 1998. Yesterday, I accidentally boarded an express train going in the completely wrong direction and ended up in a tiny village where nobody speaks English, and the only restaurant was closed for a local {cheese} festival. My {legs} hurt, I'm broke, and yet, strangely enough, I don't think I want to go home."
+      },
+      {
+        title: "Exercise 10: The Apology",
+        audioSrc: "audio10.mp3",
+        discrepancies: [
+          { screen: "porch", audio: "doorstep" },
+          { screen: "shut", audio: "slam" },
+          { screen: "falling", audio: "failing" },
+          { screen: "stupid", audio: "cowardly" },
+          { screen: "hug", audio: "forgive" }
+        ],
+        text: "I know I'm the last person you want to see on your {porch} right now, and if you {shut} the door in my face, I completely deserve it. Back then, I was so terrified of {falling} that I chose to ruin everything before it had a chance to fall apart on its own. Walking away without an explanation was {stupid}, and it's the biggest regret of my life. I didn't come here expecting you to {hug} me right away, or even at all. I just needed you to know that you were never the problem—I was."
       }
     ];
 
@@ -588,46 +520,37 @@
 
     function renderScript() {
       scriptBox.innerHTML = "";
-      const turns = EXERCISES[currentIdx].turns;
+      const rawText = EXERCISES[currentIdx].text;
+      
+      const tokens = rawText.match(/\{[\w'-]+\}|[A-Za-z0-9'-]+|[^\s\w]/g) || [];
 
-      turns.forEach(turn => {
-        const turnDiv = document.createElement("div");
-        turnDiv.className = "dialogue-turn";
+      tokens.forEach((token, idx) => {
+        let clean = token;
+        let isTarget = false;
 
-        const spk = document.createElement("span");
-        spk.className = "speaker";
-        spk.textContent = turn.speaker + " ";
-        turnDiv.appendChild(spk);
+        if (token.startsWith("{") && token.endsWith("}")) {
+          clean = token.slice(1, -1);
+          isTarget = true;
+        }
 
-        const words = turn.text.split(" ");
-        words.forEach(token => {
-          if (!token.trim()) return;
+        if (/^[.,!?;:"'—–()]+$/.test(clean)) {
+          scriptBox.appendChild(document.createTextNode(clean + (/[.,!?;:—–)]/.test(clean) ? " " : "")));
+          return;
+        }
 
-          let clean = token;
-          let isTarget = false;
+        const span = document.createElement("span");
+        span.className = "word";
+        span.textContent = clean;
+        span.dataset.word = clean.toLowerCase();
+        if (isTarget) span.dataset.target = "true";
 
-          if (token.startsWith("{") && token.endsWith("}")) {
-            clean = token.slice(1, -1);
-            isTarget = true;
-          }
+        span.addEventListener("click", () => toggleWord(span));
+        scriptBox.appendChild(span);
 
-          if ([".", ",", "!", "?"].includes(clean)) {
-            turnDiv.appendChild(document.createTextNode(clean + " "));
-            return;
-          }
-
-          const span = document.createElement("span");
-          span.className = "word";
-          span.textContent = clean;
-          span.dataset.word = clean.toLowerCase();
-          if (isTarget) span.dataset.target = "true";
-
-          span.addEventListener("click", () => toggleWord(span));
-          turnDiv.appendChild(span);
-          turnDiv.appendChild(document.createTextNode(" "));
-        });
-
-        scriptBox.appendChild(turnDiv);
+        const nextToken = tokens[idx + 1];
+        if (!nextToken || !/^[.,!?;:—–)]/.test(nextToken)) {
+          scriptBox.appendChild(document.createTextNode(" "));
+        }
       });
     }
 
