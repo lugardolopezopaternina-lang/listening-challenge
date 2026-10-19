@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benchmark Listening Challenge</title>
+  <title>Listening Challenge - 10 Exercises</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -36,7 +36,7 @@
 
     .container {
       background: var(--card);
-      max-width: 800px;
+      max-width: 820px;
       width: 100%;
       border-radius: 14px;
       padding: 24px 28px;
@@ -80,8 +80,8 @@
     }
 
     .ex-chip {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 6px;
       border: 1px solid var(--border);
       background: #334155;
@@ -157,7 +157,7 @@
       padding: 22px;
       border-radius: 10px;
       border: 1px solid var(--border);
-      line-height: 2.3;
+      line-height: 2.2;
       font-size: 1.02rem;
       margin-bottom: 20px;
       user-select: none;
@@ -310,7 +310,7 @@
     </div>
 
     <h1 id="exerciseTitle">Exercise 1: Camping Under the Stars</h1>
-    <p class="instr">Escucha el audio con atención. Haz clic sobre las <strong>5 palabras</strong> en el texto que no coincidan con lo que dice la grabación.</p>
+    <p class="instr">Escucha el audio con atención. Haz clic sobre las <strong>5 palabras</strong> en el texto que sean diferentes a lo que dicen los hablantes.</p>
 
     <div class="audio-box">
       <audio id="player" controls></audio>
@@ -334,7 +334,7 @@
         <thead>
           <tr>
             <th>Texto en pantalla</th>
-            <th>Lo que dijo el audio</th>
+            <th>Lo que dice el audio</th>
           </tr>
         </thead>
         <tbody id="diffBody"></tbody>
@@ -364,150 +364,162 @@
         title: "Exercise 2: University Degree",
         audioSrc: "audio2.mp3.mp3",
         discrepancies: [
-          { screen: "brother", audio: "sister" },
-          { screen: "Spanish", audio: "French" },
-          { screen: "money", audio: "time" },
-          { screen: "five", audio: "four" },
-          { screen: "easy", audio: "hard" }
+          { screen: "month", audio: "week" },
+          { screen: "miracle", audio: "accomplishment" },
+          { screen: "bills", audio: "fees" },
+          { screen: "management", audio: "administration" },
+          { screen: "marine", audio: "wildlife" }
         ],
         turns: [
-          { speaker: "Man:", text: "So what is your {brother} majoring in at the university ?" },
-          { speaker: "Woman:", text: "She decided to study {Spanish} literature and secondary education ." },
-          { speaker: "Man:", text: "That sounds like it will take a lot of {money} and effort ." },
-          { speaker: "Woman:", text: "Yes , it will probably take her {five} full years , but she is not afraid of {easy} work ." }
+          { speaker: "Daughter:", text: "Hey Dad , are you going to miss me when I leave for college next {month} ?" },
+          { speaker: "Dad:", text: "Of course I will ! I'll miss you and worry about you . Getting a university degree is a real {miracle} ." },
+          { speaker: "Dad:", text: "Did you pay your tuition and housing {bills} by the deadline ?" },
+          { speaker: "Dad:", text: "You know , business {management} will be a great major for you ." },
+          { speaker: "Daughter:", text: "Dad , I decided to major in {marine} science ." }
         ]
       },
       {
         title: "Exercise 3: Radio Advertising",
         audioSrc: "audio3.mp3.mp3",
         discrepancies: [
-          { screen: "expensive", audio: "cheap" },
-          { screen: "morning", audio: "afternoon" },
-          { screen: "television", audio: "radio" },
-          { screen: "listen", audio: "hear" },
-          { screen: "Friday", audio: "Monday" }
+          { screen: "cat", audio: "dog" },
+          { screen: "tea", audio: "coffee" },
+          { screen: "bedroom", audio: "kitchen" },
+          { screen: "Super", audio: "Master" },
+          { screen: "four", audio: "three" }
         ],
         turns: [
-          { speaker: "Host:", text: "Are you looking for an {expensive} way to promote your business ?" },
-          { speaker: "Host:", text: "Our {morning} show reaches thousands of loyal listeners throughout the county ." },
-          { speaker: "Host:", text: "Local {television} advertising is the best way to make people {listen} about your special offers starting this {Friday} ." }
+          { speaker: "Carpet:", text: "Hey you ! This is your carpet speaking ! Hello ! Hey ! I take a real beating from you and your family every day ." },
+          { speaker: "Carpet:", text: "The kids track mud all over me , the {cat} leaves a bunch of fur balls everywhere ." },
+          { speaker: "Carpet:", text: "You spilt {tea} the other day while entertaining guests , and your husband left a trail of potato chip crumbs from the sofa to the {bedroom} last night ." },
+          { speaker: "Carpet:", text: "Now pick up that phone and call {Super} Cleaners now ! They'll clean any {four} rooms for 29.95 , and any connecting hall is free ." }
         ]
       },
       {
         title: "Exercise 4: Personal Conflicts",
         audioSrc: "audio4.mp3.mp3",
         discrepancies: [
-          { screen: "teacher", audio: "roommate" },
-          { screen: "night", audio: "morning" },
-          { screen: "doors", audio: "dishes" },
-          { screen: "calm", audio: "angry" },
-          { screen: "leave", audio: "talk" }
+          { screen: "microwave", audio: "dishwasher" },
+          { screen: "plates", audio: "bowls" },
+          { screen: "three", audio: "two" },
+          { screen: "seven", audio: "six" },
+          { screen: "monster", audio: "robot" }
         ],
         turns: [
-          { speaker: "Mark:", text: "I really cannot stand my new {teacher} anymore ." },
-          { speaker: "Jenny:", text: "Why ? What happened ?" },
-          { speaker: "Mark:", text: "He plays loud music every {night} and never cleans the dirty {doors} in the kitchen ." },
-          { speaker: "Jenny:", text: "You look really {calm} . You definitely need to {leave} to him directly about house rules ." }
+          { speaker: "Roommate:", text: "Hey Sam , you have a minute ?" },
+          { speaker: "Sam:", text: "Sure , unless this is about the great {microwave} mystery again . I don't want to talk about that ." },
+          { speaker: "Roommate:", text: "It is not a mystery ! Someone keeps putting dirty {plates} next to the dishwasher and not in it ." },
+          { speaker: "Roommate:", text: "It has {three} buttons , Sam !" },
+          { speaker: "Sam:", text: "Can we talk about your {seven} AM blender routine ? I woke up thinking the apartment was being attacked by a very angry {monster} ." }
         ]
       },
       {
         title: "Exercise 5: Neighborhood Problems",
         audioSrc: "audio5.mp3.mp3",
         discrepancies: [
-          { screen: "cats", audio: "dogs" },
-          { screen: "street", audio: "yard" },
-          { screen: "three", audio: "two" },
-          { screen: "quiet", audio: "noisy" },
-          { screen: "call", audio: "visit" }
+          { screen: "screaming", audio: "music" },
+          { screen: "concert", audio: "party" },
+          { screen: "upstairs", audio: "downstairs" },
+          { screen: "mirror", audio: "windshield" },
+          { screen: "wide", audio: "tight" }
         ],
         turns: [
-          { speaker: "Neighbor 1:", text: "Have you noticed that the {cats} next door keep barking all night long ?" },
-          { speaker: "Neighbor 2:", text: "Yes , and they constantly run into our front {street} and dig holes ." },
-          { speaker: "Neighbor 1:", text: "This has been happening for at least {three} weeks straight . It is so {quiet} that nobody can sleep ." },
-          { speaker: "Neighbor 2:", text: "We should {call} the neighborhood association tomorrow ." }
+          { speaker: "Man:", text: "Hey Claire , did you hear anything strange last night ? I mean , I certainly did ." },
+          { speaker: "Claire:", text: "You mean the {screaming} at like 1 AM ? It sounded like someone was testing speakers for a {concert} or something in the apartment below ." },
+          { speaker: "Man:", text: "I thought so too , and I almost went {upstairs} , but I didn't want to start a whole neighborhood drama ." },
+          { speaker: "Man:", text: "Speaking of problems , did you see the note on my {mirror} ?" },
+          { speaker: "Man:", text: "I guess I parked a little crooked , but the spot is {wide} and I'll try to straighten it out next time ." }
         ]
       },
       {
         title: "Exercise 6: Clothing Styles",
         audioSrc: "audio6.mp3.mp3",
         discrepancies: [
-          { screen: "hat", audio: "jacket" },
-          { screen: "blue", audio: "black" },
-          { screen: "fifty", audio: "forty" },
-          { screen: "cash", audio: "card" },
-          { screen: "large", audio: "medium" }
+          { screen: "shoes", audio: "clothes" },
+          { screen: "winter", audio: "summer" },
+          { screen: "boots", audio: "sandals" },
+          { screen: "October", audio: "November" },
+          { screen: "scarf", audio: "hat" }
         ],
         turns: [
-          { speaker: "Customer:", text: "Excuse me , do you have this leather {hat} in another color ?" },
-          { speaker: "Clerk:", text: "We also carry it in classic {blue} and brown ." },
-          { speaker: "Customer:", text: "How much is it ? The tag looks like {fifty} dollars ." },
-          { speaker: "Clerk:", text: "Yes , and if you pay with {cash} today , you get a discount on any {large} size ." }
+          { speaker: "Girl:", text: "Hey Jake , are you ready for your trip ?" },
+          { speaker: "Jake:", text: "Well , not really . I still have to buy some {shoes} ." },
+          { speaker: "Jake:", text: "It's really hot in the {winter} , so I'm going to buy some shorts , {boots} , and a few t-shirts ." },
+          { speaker: "Jake:", text: "People say the fall can still be warm until {October} , so I'm going to buy some jeans and casual shirts ." },
+          { speaker: "Jake:", text: "It often snows in the mountains , so I'm going to buy a couple of warm sweaters , a jacket , and a {scarf} ." }
         ]
       },
       {
         title: "Exercise 7: Office Supplies",
         audioSrc: "audio7.mp3.mp3",
         discrepancies: [
-          { screen: "pens", audio: "paper" },
-          { screen: "four", audio: "two" },
-          { screen: "closet", audio: "cabinet" },
-          { screen: "manager", audio: "boss" },
-          { screen: "lunch", audio: "break" }
+          { screen: "morning", audio: "afternoon" },
+          { screen: "5:30", audio: "4:30" },
+          { screen: "catalog", audio: "brochure" },
+          { screen: "desktop", audio: "laptop" },
+          { screen: "email", audio: "fax" }
         ],
         turns: [
-          { speaker: "Employee:", text: "Hey , do you know where we keep the extra printer {pens} ?" },
-          { speaker: "Colleague:", text: "There should be {four} boxes left in the supply {closet} near the breakroom ." },
-          { speaker: "Employee:", text: "Thanks ! The {manager} asked me to prepare these reports right before our {lunch} ." }
+          { speaker: "Receptionist:", text: "Hello , Ultimate Computers , may I help you ?" },
+          { speaker: "Jack:", text: "Yes , this is Jack Kordell . May I speak to Elaine Strong , please ?" },
+          { speaker: "Receptionist:", text: "She's not in right now . She should be here later on this {morning} , maybe about {5:30} ." },
+          { speaker: "Jack:", text: "Miss Strong sent me a {catalog} detailing your newest line of {desktop} computers , but there wasn't any information about after-sales service ." },
+          { speaker: "Receptionist:", text: "Would you like me to {email} that to you ?" }
         ]
       },
       {
         title: "Exercise 8: Shopping for the Day",
         audioSrc: "audio8.mp3.mp3",
         discrepancies: [
-          { screen: "apples", audio: "oranges" },
-          { screen: "milk", audio: "bread" },
-          { screen: "bag", audio: "list" },
-          { screen: "evening", audio: "afternoon" },
-          { screen: "bike", audio: "car" }
+          { screen: "Mother's", audio: "Father's" },
+          { screen: "watch", audio: "wallet" },
+          { screen: "blue", audio: "black" },
+          { screen: "twenty", audio: "ten" },
+          { screen: "belt", audio: "tie" }
         ],
         turns: [
-          { speaker: "Daughter:", text: "Mom , don't forget to buy fresh {apples} and a carton of {milk} at the supermarket ." },
-          { speaker: "Mother:", text: "I wrote everything down on my shopping {bag} so I won't forget ." },
-          { speaker: "Mother:", text: "I'll head out this {evening} right after I take the {bike} to the mechanic ." }
+          { speaker: "Clerk:", text: "Hi young lady , how may I help you ?" },
+          { speaker: "Girl:", text: "Well , yeah , I'm looking for a {Mother's} Day gift ." },
+          { speaker: "Clerk:", text: "How about getting your father a new {watch} ?" },
+          { speaker: "Girl:", text: "How much is that wallet ? The {blue} one ?" },
+          { speaker: "Girl:", text: "I don't have that much money . Probably about {twenty} dollars or so ." },
+          { speaker: "Clerk:", text: "How about this {belt} ? How about 5 dollars ? What do you say ?" }
         ]
       },
       {
         title: "Exercise 9: Restaurant Order",
         audioSrc: "audio9.mp3.mp3",
         discrepancies: [
-          { screen: "steak", audio: "chicken" },
-          { screen: "water", audio: "soda" },
-          { screen: "soup", audio: "salad" },
-          { screen: "ice", audio: "lemon" },
-          { screen: "table", audio: "booth" }
+          { screen: "here", audio: "go" },
+          { screen: "hamburgers", audio: "cheeseburgers" },
+          { screen: "basketball", audio: "soccer" },
+          { screen: "vanilla", audio: "chocolate" },
+          { screen: "dog", audio: "cat" }
         ],
         turns: [
-          { speaker: "Server:", text: "Good evening . Are you ready to order or do you need a minute ?" },
-          { speaker: "Guest:", text: "I think we are ready . I would like the grilled {steak} with a fresh garden {soup} on the side ." },
-          { speaker: "Server:", text: "And for your beverage ?" },
-          { speaker: "Guest:", text: "A glass of cold {water} with {ice} , please . We love this corner {table} ." }
+          { speaker: "Cashier:", text: "Hi , is this going to be for here or to go ?" },
+          { speaker: "Customer:", text: "To {here} . And yeah , I'd like 80 {hamburgers} ." },
+          { speaker: "Customer:", text: "Actually , the food is for a girl's {basketball} team , and the coaches , and some wild fans ." },
+          { speaker: "Customer:", text: "I'd like 60 large fries , 13 baked potatoes , 40 {vanilla} shakes , and a glass of water with no ice ." },
+          { speaker: "Customer:", text: "It's for our team {dog} ." }
         ]
       },
       {
         title: "Exercise 10: Health Club",
-        audioSrc: "audio10.mp3",
+        audioSrc: "audio10.mp3.mp3",
         discrepancies: [
-          { screen: "monthly", audio: "yearly" },
-          { screen: "swimming", audio: "running" },
-          { screen: "eight", audio: "seven" },
-          { screen: "trainer", audio: "instructor" },
-          { screen: "shower", audio: "lockers" }
+          { screen: "boxes", audio: "weights" },
+          { screen: "leg", audio: "back" },
+          { screen: "three", audio: "five" },
+          { screen: "Texas", audio: "Utah" },
+          { screen: "history", audio: "math" }
         ],
         turns: [
-          { speaker: "Staff:", text: "Welcome to Premier Fitness . Are you interested in our {monthly} membership plan ?" },
-          { speaker: "Visitor:", text: "Yes , I am mainly looking to use the {swimming} track and free weights ." },
-          { speaker: "Staff:", text: "Our facility opens at {eight} in the morning every weekday . You can also work with a personal {trainer} ." },
-          { speaker: "Visitor:", text: "Great , where are the member {shower} located ?" }
+          { speaker: "Justin:", text: "Hi , do you need some help with those {boxes} ? I can move them for you ." },
+          { speaker: "Justin:", text: "No , let me help you ... Oh , my {leg} !" },
+          { speaker: "Rachel:", text: "Are you okay ? Do you come here often ?" },
+          { speaker: "Rachel:", text: "Yeah , I usually come {three} times a week . I spent most of my life in a small town in {Texas} called Spanish Fork ." },
+          { speaker: "Rachel:", text: "I'm a teacher . I teach {history} and science ." }
         ]
       }
     ];
@@ -627,7 +639,7 @@
         el.classList.remove("selected");
       } else {
         if (selectedWords.size >= 5) {
-          alert("Ya seleccionaste 5 palabras. Haz clic en una para desmarcarla primero si deseas cambiarla.");
+          alert("Ya seleccionaste 5 palabras. Haz clic sobre una de las marcadas para deseleccionarla si deseas cambiarla.");
           return;
         }
         selectedWords.add(el);
