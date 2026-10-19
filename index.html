@@ -474,15 +474,12 @@
     const exerciseTitle = document.getElementById("exerciseTitle");
     const chipsContainer = document.getElementById("chipsContainer");
 
-    // DETECTOR INTELIGENTE: Si no encuentra audioX.mp3, busca audioX.mp3.mp3 automáticamente
+    // Intenta audioX.mp3 y si falla prueba audioX.mp3.mp3
     player.addEventListener('error', function() {
       const current = player.getAttribute('src');
       if (!current) return;
       if (current.endsWith('.mp3') && !current.endsWith('.mp3.mp3')) {
         player.src = current + '.mp3';
-        player.load();
-      } else if (current.endsWith('.mp3.mp3')) {
-        player.src = current.replace('.mp3.mp3', '.mp3');
         player.load();
       }
     });
@@ -534,7 +531,6 @@
     function renderScript() {
       scriptBox.innerHTML = "";
       const rawText = EXERCISES[currentIdx].text;
-      
       const tokens = rawText.match(/\{[\w'-]+\}|[A-Za-z0-9'-]+|[^\s\w]/g) || [];
 
       tokens.forEach((token, idx) => {
@@ -575,7 +571,7 @@
         el.classList.remove("selected");
       } else {
         if (selectedWords.size >= 5) {
-          alert("Ya seleccionaste 5 palabras. Haz clic sobre una de las marcadas para deseleccionarla si deseas cambiarla.");
+          alert("Ya seleccionaste 5 palabras. Haz clic sobre una para deseleccionarla si deseas cambiarla.");
           return;
         }
         selectedWords.add(el);
