@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listening Practice - Spot the 5 Errors</title>
+  <title>Listening Challenge - 10 Exercises</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -17,48 +17,303 @@
       --wrong: #ef4444;
       --border: #334155;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 30px 16px; min-height: 100vh; }
-    .container { background: var(--card); max-width: 720px; width: 100%; border-radius: 14px; padding: 28px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
-    h1 { font-size: 1.5rem; color: var(--accent); margin-bottom: 8px; }
-    p.instr { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
-    .audio-box { background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); padding: 16px; border-radius: 10px; margin-bottom: 20px; }
-    audio { width: 100%; height: 42px; outline: none; }
-    .counter-bar { display: flex; justify-content: space-between; font-weight: 600; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border-radius: 8px; margin-bottom: 18px; border: 1px solid var(--border); }
-    .counter { color: var(--selected); font-weight: 700; }
-    .counter.full { color: var(--correct); }
-    .script-box { background: #0b1120; padding: 22px; border-radius: 10px; border: 1px solid var(--border); line-height: 2.3; font-size: 1.1rem; margin-bottom: 22px; user-select: none; }
-    .dialogue-turn { margin-bottom: 14px; }
-    .speaker { font-weight: 700; color: var(--accent); margin-right: 4px; }
-    .word { display: inline-block; padding: 2px 6px; margin: 1px 2px; border-radius: 6px; cursor: pointer; border-bottom: 2px solid transparent; transition: background 0.15s; }
-    .word:hover { background: rgba(255, 255, 255, 0.1); }
-    .word.selected { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border-bottom: 2px solid var(--selected); font-weight: 600; }
-    .word.hit { background: rgba(34, 197, 94, 0.25) !important; color: #4ade80 !important; border-bottom: 2px solid var(--correct) !important; text-decoration: line-through; }
-    .word.missed { border: 2px dashed var(--selected) !important; color: #fbbf24 !important; background: transparent !important; }
-    .word.false-alarm { background: rgba(239, 68, 68, 0.2) !important; color: #f87171 !important; border-bottom: 2px solid var(--wrong) !important; }
-    .actions { display: flex; gap: 12px; margin-bottom: 20px; }
-    button { flex: 1; padding: 13px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; }
-    .btn-check { background: var(--accent); color: #0f172a; }
-    .btn-check:hover { background: var(--accent-hover); }
-    .btn-reset { background: #334155; color: #fff; }
-    .btn-reset:hover { background: #475569; }
-    .results { display: none; padding: 18px; background: #0b1120; border-radius: 10px; border: 1px solid var(--border); }
-    .results.visible { display: block; }
-    .diff-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem; }
-    .diff-table th, .diff-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
-    .diff-table th { color: var(--text-muted); }
-    .td-wrong { color: #f87171; text-decoration: line-through; font-weight: 600; }
-    .td-right { color: #4ade80; font-weight: 700; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: var(--card);
+      max-width: 780px;
+      width: 100%;
+      border-radius: 14px;
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      background: #0284c7;
+      color: #fff;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .exercise-grid {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      background: rgba(15, 23, 42, 0.5);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      align-items: center;
+    }
+
+    .grid-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-right: 6px;
+      font-weight: 600;
+    }
+
+    .ex-chip {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #334155;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+
+    .ex-chip:hover {
+      background: #475569;
+    }
+
+    .ex-chip.active {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+    }
+
+    h1 {
+      font-size: 1.45rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    p.instr {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .audio-box {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+    }
+
+    audio {
+      width: 100%;
+      height: 42px;
+      outline: none;
+    }
+
+    .counter-bar {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+    }
+
+    .counter {
+      color: var(--selected);
+      font-weight: 700;
+    }
+
+    .counter.full {
+      color: var(--correct);
+    }
+
+    .script-box {
+      background: #0b1120;
+      padding: 22px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      line-height: 2.3;
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .dialogue-turn {
+      margin-bottom: 12px;
+    }
+
+    .speaker {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 4px;
+    }
+
+    .word {
+      display: inline-block;
+      padding: 2px 6px;
+      margin: 1px 2px;
+      border-radius: 6px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: background 0.15s;
+    }
+
+    .word:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .word.selected {
+      background: rgba(245, 158, 11, 0.25);
+      color: #fbbf24;
+      border-bottom: 2px solid var(--selected);
+      font-weight: 600;
+    }
+
+    .word.hit {
+      background: rgba(34, 197, 94, 0.25) !important;
+      color: #4ade80 !important;
+      border-bottom: 2px solid var(--correct) !important;
+      text-decoration: line-through;
+    }
+
+    .word.missed {
+      border: 2px dashed var(--selected) !important;
+      color: #fbbf24 !important;
+      background: transparent !important;
+    }
+
+    .word.false-alarm {
+      background: rgba(239, 68, 68, 0.2) !important;
+      color: #f87171 !important;
+      border-bottom: 2px solid var(--wrong) !important;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+
+    .btn-check {
+      background: var(--accent);
+      color: #0f172a;
+    }
+
+    .btn-check:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-nav {
+      background: #334155;
+      color: #fff;
+    }
+
+    .btn-nav:hover {
+      background: #475569;
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .results {
+      display: none;
+      padding: 18px;
+      background: #0b1120;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .results.visible {
+      display: block;
+    }
+
+    .diff-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+
+    .diff-table th, .diff-table td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .diff-table th {
+      color: var(--text-muted);
+    }
+
+    .td-wrong {
+      color: #f87171;
+      text-decoration: line-through;
+      font-weight: 600;
+    }
+
+    .td-right {
+      color: #4ade80;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Spot the 5 Wrong Words</h1>
-    <p class="instr">Escucha el diálogo con atención. Haz clic en las <strong>5 palabras</strong> del texto que son distintas a lo que dicen Paul y Sarah.</p>
+    <div class="nav-header">
+      <span class="badge" id="exerciseBadge">Exercise 1 of 10</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="prevBtn" class="btn-nav" style="padding: 6px 14px; font-size: 0.85rem;" disabled>&larr; Anterior</button>
+        <button id="nextBtn" class="btn-nav" style="padding: 6px 14px; font-size: 0.85rem;">Siguiente &rarr;</button>
+      </div>
+    </div>
+
+    <div class="exercise-grid" id="chipsContainer">
+      <span class="grid-label">Ir al ejercicio:</span>
+    </div>
+
+    <h1 id="exerciseTitle">Exercise 1: Camping Gear</h1>
+    <p class="instr">Escucha el audio con atención. Haz clic en las <strong>5 palabras</strong> del texto que sean distintas a lo que dicen los hablantes.</p>
 
     <div class="audio-box">
-      <audio id="player" controls src="Camping Gear - Randalls ESL Cyber Listening Lab.mp3"></audio>
+      <audio id="player" controls></audio>
     </div>
 
     <div class="counter-bar">
@@ -70,7 +325,7 @@
 
     <div class="actions">
       <button class="btn-check" id="checkBtn">Verificar respuestas</button>
-      <button class="btn-reset" id="resetBtn">Reiniciar</button>
+      <button class="btn-nav" id="resetBtn">Reiniciar intento</button>
     </div>
 
     <div class="results" id="resultsBox">
@@ -88,46 +343,228 @@
   </div>
 
   <script>
-    const DISCREPANCIES = [
-      { screen: "monthly", audio: "yearly" },
-      { screen: "five", audio: "three" },
-      { screen: "fishing", audio: "hiking" },
-      { screen: "moon", audio: "stars" },
-      { screen: "snow", audio: "rain" }
-    ];
-
-    const TURNS = [
+    const EXERCISES = [
       {
-        speaker: "Paul:",
-        text: "Sarah , I've been looking forward to our {monthly} campout for {five} weeks ."
+        title: "Exercise 1: Camping Gear",
+        audioSrc: "audio1.mp3.mp3",
+        discrepancies: [
+          { screen: "monthly", audio: "yearly" },
+          { screen: "five", audio: "three" },
+          { screen: "fishing", audio: "hiking" },
+          { screen: "moon", audio: "stars" },
+          { screen: "snow", audio: "rain" }
+        ],
+        turns: [
+          { speaker: "Paul:", text: "Sarah , I've been looking forward to our {monthly} campout for {five} weeks ." },
+          { speaker: "Sarah:", text: "Me too ! It's going to be a wonderful day for {fishing} tomorrow . The great outdoors , camping under the {moon} . This is the life ." },
+          { speaker: "Sarah:", text: "Yeah , but Paul , I'm a little bit worried about the weather though . The weatherman said it was going to {snow} later tonight ." }
+        ]
       },
       {
-        speaker: "Sarah:",
-        text: "Me too ! It's going to be a wonderful day for {fishing} tomorrow . The great outdoors , camping under the {moon} . This is the life ."
+        title: "Exercise 2: Travel Plans",
+        audioSrc: "audio2.mp3.mp3",
+        discrepancies: [
+          { screen: "bus", audio: "train" },
+          { screen: "morning", audio: "afternoon" },
+          { screen: "hotel", audio: "apartment" },
+          { screen: "cheap", audio: "expensive" },
+          { screen: "Monday", audio: "Friday" }
+        ],
+        turns: [
+          { speaker: "Alex:", text: "We should take the {bus} tomorrow {morning} ." },
+          { speaker: "Emma:", text: "No , renting an {hotel} room is too {cheap} for us ." },
+          { speaker: "Alex:", text: "All right , let's book it for {Monday} then ." }
+        ]
       },
       {
-        speaker: "Sarah:",
-        text: "Yeah , but Paul , I'm a little bit worried about the weather though . The weatherman said it was going to {snow} later tonight ."
+        title: "Exercise 3: At the Restaurant",
+        audioSrc: "audio3.mp3.mp3",
+        discrepancies: [
+          { screen: "chicken", audio: "beef" },
+          { screen: "water", audio: "juice" },
+          { screen: "two", audio: "three" },
+          { screen: "soup", audio: "salad" },
+          { screen: "cold", audio: "hot" }
+        ],
+        turns: [
+          { speaker: "Waiter:", text: "Would you like the {chicken} or the pasta tonight ?" },
+          { speaker: "Customer:", text: "I'll take the pasta with a glass of {water} and {two} bowls of {soup} ." },
+          { speaker: "Waiter:", text: "Be careful , the plate is very {cold} ." }
+        ]
+      },
+      {
+        title: "Exercise 4: Job Interview",
+        audioSrc: "audio4.mp3.mp3",
+        discrepancies: [
+          { screen: "manager", audio: "director" },
+          { screen: "four", audio: "six" },
+          { screen: "sales", audio: "marketing" },
+          { screen: "Spanish", audio: "French" },
+          { screen: "Tuesday", audio: "Thursday" }
+        ],
+        turns: [
+          { speaker: "Interviewer:", text: "Welcome . You are applying for the {manager} position with {four} years of experience in {sales} ?" },
+          { speaker: "Candidate:", text: "Yes , and I also speak fluent {Spanish} . I can start next {Tuesday} ." }
+        ]
+      },
+      {
+        title: "Exercise 5: Daily Routine",
+        audioSrc: "audio5.mp3.mp3",
+        discrepancies: [
+          { screen: "seven", audio: "six" },
+          { screen: "coffee", audio: "tea" },
+          { screen: "walk", audio: "drive" },
+          { screen: "lunch", audio: "breakfast" },
+          { screen: "park", audio: "gym" }
+        ],
+        turns: [
+          { speaker: "Tom:", text: "I usually wake up at {seven} and make a cup of {coffee} ." },
+          { speaker: "Lisa:", text: "Do you {walk} to work after having {lunch} at the {park} ?" }
+        ]
+      },
+      {
+        title: "Exercise 6: Shopping Trip",
+        audioSrc: "audio6.mp3.mp3",
+        discrepancies: [
+          { screen: "blue", audio: "black" },
+          { screen: "shirt", audio: "jacket" },
+          { screen: "twenty", audio: "fifty" },
+          { screen: "cash", audio: "card" },
+          { screen: "small", audio: "medium" }
+        ],
+        turns: [
+          { speaker: "Clerk:", text: "Here is the {blue} {shirt} you requested in size {small} ." },
+          { speaker: "Shopper:", text: "The tag says {twenty} dollars . Can I pay with {cash} ?" }
+        ]
+      },
+      {
+        title: "Exercise 7: Doctor's Appointment",
+        audioSrc: "audio7.mp3.mp3",
+        discrepancies: [
+          { screen: "headache", audio: "stomachache" },
+          { screen: "days", audio: "weeks" },
+          { screen: "pills", audio: "drops" },
+          { screen: "night", audio: "morning" },
+          { screen: "rest", audio: "exercise" }
+        ],
+        turns: [
+          { speaker: "Doctor:", text: "How long have you had this {headache} ?" },
+          { speaker: "Patient:", text: "For about three {days} . Should I take these {pills} every {night} and get some {rest} ?" }
+        ]
+      },
+      {
+        title: "Exercise 8: Checking In",
+        audioSrc: "audio8.mp3.mp3",
+        discrepancies: [
+          { screen: "single", audio: "double" },
+          { screen: "fourth", audio: "seventh" },
+          { screen: "key", audio: "card" },
+          { screen: "pool", audio: "gym" },
+          { screen: "ten", audio: "nine" }
+        ],
+        turns: [
+          { speaker: "Receptionist:", text: "You have a {single} room reserved on the {fourth} floor . Here is your room {key} ." },
+          { speaker: "Guest:", text: "Is the {pool} open until {ten} tonight ?" }
+        ]
+      },
+      {
+        title: "Exercise 9: Weather Forecast",
+        audioSrc: "audio9.mp3.mp3",
+        discrepancies: [
+          { screen: "sunny", audio: "cloudy" },
+          { screen: "weekend", audio: "week" },
+          { screen: "windy", audio: "calm" },
+          { screen: "south", audio: "north" },
+          { screen: "cooler", audio: "warmer" }
+        ],
+        turns: [
+          { speaker: "Reporter:", text: "Expect a {sunny} {weekend} with {windy} conditions arriving from the {south} ." },
+          { speaker: "Reporter:", text: "Temperatures will remain {cooler} throughout the afternoon ." }
+        ]
+      },
+      {
+        title: "Exercise 10: Airport Announcements",
+        audioSrc: "audio10.mp3.mp3",
+        discrepancies: [
+          { screen: "Rome", audio: "Madrid" },
+          { screen: "twelve", audio: "fourteen" },
+          { screen: "delayed", audio: "cancelled" },
+          { screen: "passport", audio: "ticket" },
+          { screen: "gate", audio: "terminal" }
+        ],
+        turns: [
+          { speaker: "Announcement:", text: "Passengers for flight to {Rome} please proceed to {gate} {twelve} ." },
+          { speaker: "Announcement:", text: "Due to bad weather the flight has been {delayed} . Please have your {passport} ready ." }
+        ]
       }
     ];
 
+    let currentIdx = 0;
+    let selectedWords = new Set();
+    let isChecked = false;
+
+    const player = document.getElementById("player");
     const scriptBox = document.getElementById("scriptBox");
     const counterEl = document.getElementById("counter");
     const checkBtn = document.getElementById("checkBtn");
     const resetBtn = document.getElementById("resetBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
     const resultsBox = document.getElementById("resultsBox");
     const scoreText = document.getElementById("scoreText");
     const diffBody = document.getElementById("diffBody");
+    const exerciseBadge = document.getElementById("exerciseBadge");
+    const exerciseTitle = document.getElementById("exerciseTitle");
+    const chipsContainer = document.getElementById("chipsContainer");
 
-    let selectedWords = new Set();
-    let isChecked = false;
+    function createChips() {
+      EXERCISES.forEach((_, i) => {
+        const btn = document.createElement("button");
+        btn.className = "ex-chip";
+        btn.textContent = i + 1;
+        btn.title = `Ir al ejercicio ${i + 1}`;
+        btn.addEventListener("click", () => loadExercise(i));
+        chipsContainer.appendChild(btn);
+      });
+    }
 
-    function buildUI() {
-      scriptBox.innerHTML = "";
+    function updateActiveChip() {
+      const chips = document.querySelectorAll(".ex-chip");
+      chips.forEach((c, i) => {
+        if (i === currentIdx) c.classList.add("active");
+        else c.classList.remove("active");
+      });
+    }
+
+    function loadExercise(index) {
+      currentIdx = index;
+      const data = EXERCISES[currentIdx];
+
+      exerciseBadge.textContent = `Exercise ${currentIdx + 1} of ${EXERCISES.length}`;
+      exerciseTitle.textContent = data.title;
+      player.src = data.audioSrc;
+      player.load();
+
+      prevBtn.disabled = currentIdx === 0;
+      nextBtn.disabled = currentIdx === EXERCISES.length - 1;
+
+      updateActiveChip();
+      resetState();
+    }
+
+    function resetState() {
+      isChecked = false;
+      resultsBox.classList.remove("visible");
       selectedWords.clear();
       updateCounter();
+      renderScript();
+    }
 
-      TURNS.forEach(turn => {
+    function renderScript() {
+      scriptBox.innerHTML = "";
+      const turns = EXERCISES[currentIdx].turns;
+
+      turns.forEach(turn => {
         const turnDiv = document.createElement("div");
         turnDiv.className = "dialogue-turn";
 
@@ -176,7 +613,7 @@
         el.classList.remove("selected");
       } else {
         if (selectedWords.size >= 5) {
-          alert("Ya seleccionaste 5 palabras. Haz clic en una de ellas para desmarcarla primero si deseas cambiarla.");
+          alert("Ya seleccionaste 5 palabras. Haz clic en una para desmarcarla primero si deseas cambiarla.");
           return;
         }
         selectedWords.add(el);
@@ -188,11 +625,8 @@
     function updateCounter() {
       const count = selectedWords.size;
       counterEl.textContent = `${count} / 5`;
-      if (count === 5) {
-        counterEl.classList.add("full");
-      } else {
-        counterEl.classList.remove("full");
-      }
+      if (count === 5) counterEl.classList.add("full");
+      else counterEl.classList.remove("full");
     }
 
     checkBtn.addEventListener("click", () => {
@@ -224,20 +658,20 @@
       scoreText.innerHTML = `Puntuación: <span style="color: ${score >= 4 ? '#4ade80' : '#f59e0b'}">${score} de 5 aciertos</span>`;
       
       diffBody.innerHTML = "";
-      DISCREPANCIES.forEach(item => {
+      EXERCISES[currentIdx].discrepancies.forEach(item => {
         const tr = document.createElement("tr");
         tr.innerHTML = `<td class="td-wrong">${item.screen}</td><td class="td-right">${item.audio}</td>`;
         diffBody.appendChild(tr);
       });
     });
 
-    resetBtn.addEventListener("click", () => {
-      isChecked = false;
-      resultsBox.classList.remove("visible");
-      buildUI();
-    });
+    resetBtn.addEventListener("click", resetState);
+    prevBtn.addEventListener("click", () => { if (currentIdx > 0) loadExercise(currentIdx - 1); });
+    nextBtn.addEventListener("click", () => { if (currentIdx < EXERCISES.length - 1) loadExercise(currentIdx + 1); });
 
-    buildUI();
+    createChips();
+    loadExercise(0);
   </script>
 </body>
 </html>
+ 
