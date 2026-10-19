@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listening Challenge - 10 Exercises</title>
+  <title>Benchmark Listening Challenge</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -36,7 +36,7 @@
 
     .container {
       background: var(--card);
-      max-width: 780px;
+      max-width: 800px;
       width: 100%;
       border-radius: 14px;
       padding: 24px 28px;
@@ -106,7 +106,7 @@
     }
 
     h1 {
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       color: var(--accent);
       margin-bottom: 6px;
     }
@@ -158,7 +158,7 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       line-height: 2.3;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       margin-bottom: 20px;
       user-select: none;
     }
@@ -306,11 +306,11 @@
     </div>
 
     <div class="exercise-grid" id="chipsContainer">
-      <span class="grid-label">Ir al ejercicio:</span>
+      <span class="grid-label">Ejercicio:</span>
     </div>
 
-    <h1 id="exerciseTitle">Exercise 1: Camping Gear</h1>
-    <p class="instr">Escucha el audio con atención. Haz clic en las <strong>5 palabras</strong> del texto que sean distintas a lo que dicen los hablantes.</p>
+    <h1 id="exerciseTitle">Exercise 1: Camping Under the Stars</h1>
+    <p class="instr">Escucha el audio con atención. Haz clic sobre las <strong>5 palabras</strong> en el texto que no coincidan con lo que dice la grabación.</p>
 
     <div class="audio-box">
       <audio id="player" controls></audio>
@@ -345,7 +345,7 @@
   <script>
     const EXERCISES = [
       {
-        title: "Exercise 1: Camping Gear",
+        title: "Exercise 1: Camping Under the Stars",
         audioSrc: "audio1.mp3.mp3",
         discrepancies: [
           { screen: "monthly", audio: "yearly" },
@@ -361,140 +361,153 @@
         ]
       },
       {
-        title: "Exercise 2: Travel Plans",
+        title: "Exercise 2: University Degree",
         audioSrc: "audio2.mp3.mp3",
         discrepancies: [
-          { screen: "bus", audio: "train" },
-          { screen: "morning", audio: "afternoon" },
-          { screen: "hotel", audio: "apartment" },
-          { screen: "cheap", audio: "expensive" },
-          { screen: "Monday", audio: "Friday" }
+          { screen: "brother", audio: "sister" },
+          { screen: "Spanish", audio: "French" },
+          { screen: "money", audio: "time" },
+          { screen: "five", audio: "four" },
+          { screen: "easy", audio: "hard" }
         ],
         turns: [
-          { speaker: "Alex:", text: "We should take the {bus} tomorrow {morning} ." },
-          { speaker: "Emma:", text: "No , renting an {hotel} room is too {cheap} for us ." },
-          { speaker: "Alex:", text: "All right , let's book it for {Monday} then ." }
+          { speaker: "Man:", text: "So what is your {brother} majoring in at the university ?" },
+          { speaker: "Woman:", text: "She decided to study {Spanish} literature and secondary education ." },
+          { speaker: "Man:", text: "That sounds like it will take a lot of {money} and effort ." },
+          { speaker: "Woman:", text: "Yes , it will probably take her {five} full years , but she is not afraid of {easy} work ." }
         ]
       },
       {
-        title: "Exercise 3: At the Restaurant",
+        title: "Exercise 3: Radio Advertising",
         audioSrc: "audio3.mp3.mp3",
         discrepancies: [
-          { screen: "chicken", audio: "beef" },
-          { screen: "water", audio: "juice" },
-          { screen: "two", audio: "three" },
-          { screen: "soup", audio: "salad" },
-          { screen: "cold", audio: "hot" }
+          { screen: "expensive", audio: "cheap" },
+          { screen: "morning", audio: "afternoon" },
+          { screen: "television", audio: "radio" },
+          { screen: "listen", audio: "hear" },
+          { screen: "Friday", audio: "Monday" }
         ],
         turns: [
-          { speaker: "Waiter:", text: "Would you like the {chicken} or the pasta tonight ?" },
-          { speaker: "Customer:", text: "I'll take the pasta with a glass of {water} and {two} bowls of {soup} ." },
-          { speaker: "Waiter:", text: "Be careful , the plate is very {cold} ." }
+          { speaker: "Host:", text: "Are you looking for an {expensive} way to promote your business ?" },
+          { speaker: "Host:", text: "Our {morning} show reaches thousands of loyal listeners throughout the county ." },
+          { speaker: "Host:", text: "Local {television} advertising is the best way to make people {listen} about your special offers starting this {Friday} ." }
         ]
       },
       {
-        title: "Exercise 4: Job Interview",
+        title: "Exercise 4: Personal Conflicts",
         audioSrc: "audio4.mp3.mp3",
         discrepancies: [
-          { screen: "manager", audio: "director" },
-          { screen: "four", audio: "six" },
-          { screen: "sales", audio: "marketing" },
-          { screen: "Spanish", audio: "French" },
-          { screen: "Tuesday", audio: "Thursday" }
+          { screen: "teacher", audio: "roommate" },
+          { screen: "night", audio: "morning" },
+          { screen: "doors", audio: "dishes" },
+          { screen: "calm", audio: "angry" },
+          { screen: "leave", audio: "talk" }
         ],
         turns: [
-          { speaker: "Interviewer:", text: "Welcome . You are applying for the {manager} position with {four} years of experience in {sales} ?" },
-          { speaker: "Candidate:", text: "Yes , and I also speak fluent {Spanish} . I can start next {Tuesday} ." }
+          { speaker: "Mark:", text: "I really cannot stand my new {teacher} anymore ." },
+          { speaker: "Jenny:", text: "Why ? What happened ?" },
+          { speaker: "Mark:", text: "He plays loud music every {night} and never cleans the dirty {doors} in the kitchen ." },
+          { speaker: "Jenny:", text: "You look really {calm} . You definitely need to {leave} to him directly about house rules ." }
         ]
       },
       {
-        title: "Exercise 5: Daily Routine",
+        title: "Exercise 5: Neighborhood Problems",
         audioSrc: "audio5.mp3.mp3",
         discrepancies: [
-          { screen: "seven", audio: "six" },
-          { screen: "coffee", audio: "tea" },
-          { screen: "walk", audio: "drive" },
-          { screen: "lunch", audio: "breakfast" },
-          { screen: "park", audio: "gym" }
+          { screen: "cats", audio: "dogs" },
+          { screen: "street", audio: "yard" },
+          { screen: "three", audio: "two" },
+          { screen: "quiet", audio: "noisy" },
+          { screen: "call", audio: "visit" }
         ],
         turns: [
-          { speaker: "Tom:", text: "I usually wake up at {seven} and make a cup of {coffee} ." },
-          { speaker: "Lisa:", text: "Do you {walk} to work after having {lunch} at the {park} ?" }
+          { speaker: "Neighbor 1:", text: "Have you noticed that the {cats} next door keep barking all night long ?" },
+          { speaker: "Neighbor 2:", text: "Yes , and they constantly run into our front {street} and dig holes ." },
+          { speaker: "Neighbor 1:", text: "This has been happening for at least {three} weeks straight . It is so {quiet} that nobody can sleep ." },
+          { speaker: "Neighbor 2:", text: "We should {call} the neighborhood association tomorrow ." }
         ]
       },
       {
-        title: "Exercise 6: Shopping Trip",
+        title: "Exercise 6: Clothing Styles",
         audioSrc: "audio6.mp3.mp3",
         discrepancies: [
+          { screen: "hat", audio: "jacket" },
           { screen: "blue", audio: "black" },
-          { screen: "shirt", audio: "jacket" },
-          { screen: "twenty", audio: "fifty" },
+          { screen: "fifty", audio: "forty" },
           { screen: "cash", audio: "card" },
-          { screen: "small", audio: "medium" }
+          { screen: "large", audio: "medium" }
         ],
         turns: [
-          { speaker: "Clerk:", text: "Here is the {blue} {shirt} you requested in size {small} ." },
-          { speaker: "Shopper:", text: "The tag says {twenty} dollars . Can I pay with {cash} ?" }
+          { speaker: "Customer:", text: "Excuse me , do you have this leather {hat} in another color ?" },
+          { speaker: "Clerk:", text: "We also carry it in classic {blue} and brown ." },
+          { speaker: "Customer:", text: "How much is it ? The tag looks like {fifty} dollars ." },
+          { speaker: "Clerk:", text: "Yes , and if you pay with {cash} today , you get a discount on any {large} size ." }
         ]
       },
       {
-        title: "Exercise 7: Doctor's Appointment",
+        title: "Exercise 7: Office Supplies",
         audioSrc: "audio7.mp3.mp3",
         discrepancies: [
-          { screen: "headache", audio: "stomachache" },
-          { screen: "days", audio: "weeks" },
-          { screen: "pills", audio: "drops" },
-          { screen: "night", audio: "morning" },
-          { screen: "rest", audio: "exercise" }
+          { screen: "pens", audio: "paper" },
+          { screen: "four", audio: "two" },
+          { screen: "closet", audio: "cabinet" },
+          { screen: "manager", audio: "boss" },
+          { screen: "lunch", audio: "break" }
         ],
         turns: [
-          { speaker: "Doctor:", text: "How long have you had this {headache} ?" },
-          { speaker: "Patient:", text: "For about three {days} . Should I take these {pills} every {night} and get some {rest} ?" }
+          { speaker: "Employee:", text: "Hey , do you know where we keep the extra printer {pens} ?" },
+          { speaker: "Colleague:", text: "There should be {four} boxes left in the supply {closet} near the breakroom ." },
+          { speaker: "Employee:", text: "Thanks ! The {manager} asked me to prepare these reports right before our {lunch} ." }
         ]
       },
       {
-        title: "Exercise 8: Checking In",
+        title: "Exercise 8: Shopping for the Day",
         audioSrc: "audio8.mp3.mp3",
         discrepancies: [
-          { screen: "single", audio: "double" },
-          { screen: "fourth", audio: "seventh" },
-          { screen: "key", audio: "card" },
-          { screen: "pool", audio: "gym" },
-          { screen: "ten", audio: "nine" }
+          { screen: "apples", audio: "oranges" },
+          { screen: "milk", audio: "bread" },
+          { screen: "bag", audio: "list" },
+          { screen: "evening", audio: "afternoon" },
+          { screen: "bike", audio: "car" }
         ],
         turns: [
-          { speaker: "Receptionist:", text: "You have a {single} room reserved on the {fourth} floor . Here is your room {key} ." },
-          { speaker: "Guest:", text: "Is the {pool} open until {ten} tonight ?" }
+          { speaker: "Daughter:", text: "Mom , don't forget to buy fresh {apples} and a carton of {milk} at the supermarket ." },
+          { speaker: "Mother:", text: "I wrote everything down on my shopping {bag} so I won't forget ." },
+          { speaker: "Mother:", text: "I'll head out this {evening} right after I take the {bike} to the mechanic ." }
         ]
       },
       {
-        title: "Exercise 9: Weather Forecast",
+        title: "Exercise 9: Restaurant Order",
         audioSrc: "audio9.mp3.mp3",
         discrepancies: [
-          { screen: "sunny", audio: "cloudy" },
-          { screen: "weekend", audio: "week" },
-          { screen: "windy", audio: "calm" },
-          { screen: "south", audio: "north" },
-          { screen: "cooler", audio: "warmer" }
+          { screen: "steak", audio: "chicken" },
+          { screen: "water", audio: "soda" },
+          { screen: "soup", audio: "salad" },
+          { screen: "ice", audio: "lemon" },
+          { screen: "table", audio: "booth" }
         ],
         turns: [
-          { speaker: "Reporter:", text: "Expect a {sunny} {weekend} with {windy} conditions arriving from the {south} ." },
-          { speaker: "Reporter:", text: "Temperatures will remain {cooler} throughout the afternoon ." }
+          { speaker: "Server:", text: "Good evening . Are you ready to order or do you need a minute ?" },
+          { speaker: "Guest:", text: "I think we are ready . I would like the grilled {steak} with a fresh garden {soup} on the side ." },
+          { speaker: "Server:", text: "And for your beverage ?" },
+          { speaker: "Guest:", text: "A glass of cold {water} with {ice} , please . We love this corner {table} ." }
         ]
       },
       {
-        title: "Exercise 10: Airport Announcements",
-        audioSrc: "audio10.mp3.mp3",
+        title: "Exercise 10: Health Club",
+        audioSrc: "audio10.mp3",
         discrepancies: [
-          { screen: "Rome", audio: "Madrid" },
-          { screen: "twelve", audio: "fourteen" },
-          { screen: "delayed", audio: "cancelled" },
-          { screen: "passport", audio: "ticket" },
-          { screen: "gate", audio: "terminal" }
+          { screen: "monthly", audio: "yearly" },
+          { screen: "swimming", audio: "running" },
+          { screen: "eight", audio: "seven" },
+          { screen: "trainer", audio: "instructor" },
+          { screen: "shower", audio: "lockers" }
         ],
         turns: [
-          { speaker: "Announcement:", text: "Passengers for flight to {Rome} please proceed to {gate} {twelve} ." },
-          { speaker: "Announcement:", text: "Due to bad weather the flight has been {delayed} . Please have your {passport} ready ." }
+          { speaker: "Staff:", text: "Welcome to Premier Fitness . Are you interested in our {monthly} membership plan ?" },
+          { speaker: "Visitor:", text: "Yes , I am mainly looking to use the {swimming} track and free weights ." },
+          { speaker: "Staff:", text: "Our facility opens at {eight} in the morning every weekday . You can also work with a personal {trainer} ." },
+          { speaker: "Visitor:", text: "Great , where are the member {shower} located ?" }
         ]
       }
     ];
@@ -518,6 +531,7 @@
     const chipsContainer = document.getElementById("chipsContainer");
 
     function createChips() {
+      chipsContainer.innerHTML = '<span class="grid-label">Ejercicio:</span>';
       EXERCISES.forEach((_, i) => {
         const btn = document.createElement("button");
         btn.className = "ex-chip";
@@ -585,7 +599,7 @@
             isTarget = true;
           }
 
-          if ([".", ",", "!"].includes(clean)) {
+          if ([".", ",", "!", "?"].includes(clean)) {
             turnDiv.appendChild(document.createTextNode(clean + " "));
             return;
           }
@@ -674,4 +688,3 @@
   </script>
 </body>
 </html>
- 
